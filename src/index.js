@@ -12,7 +12,8 @@ const htmlminifier = {
 
 const defaultoptions = {
   htmlminifier: htmlminifier,
-  literals: false
+  literals: false,
+  includeExtension: ['.js']
 }
 
 export default function minifyliterals (options = {}) {
@@ -25,7 +26,9 @@ export default function minifyliterals (options = {}) {
     name: 'minifyliterals',
 
     transform (code, id) {
-      if (!filter(id) || extname(id) !== '.js') return
+      if (!filter(id) || options.includeExtension.indexOf(extname(id)) === -1) {
+        return;
+      }
 
       let ast
 
