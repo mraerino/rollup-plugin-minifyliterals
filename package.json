@@ -9,7 +9,8 @@
     "pretest": "npm run build",
     "build": "rollup -c",
     "lint": "standard src",
-    "prepublish": "npm run lint && npm test"
+    "prepublish": "npm run lint && npm test",
+    "postinstall": "npm run build"
   },
   "nyc": {
     "include": [
